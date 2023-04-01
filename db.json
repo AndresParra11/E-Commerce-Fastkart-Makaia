@@ -1,0 +1,22 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Tomate Chonto",
+      "informacion": "1 und",
+      "precio": "$ 459",
+      "categoria": "Frutas y Vegetales",
+      "img": "https://exitocol.vtexassets.com/arquivos/ids/16237114-500-auto?v=638090694607900000&width=500&height=auto&aspect=true",
+      "img2": "https://exitocol.vtexassets.com/arquivos/ids/16237115-500-auto?v=1766520804&width=500&height=auto&aspect=true"
+    },
+    {
+      "id": 2,
+      "nombre": "Cebolla Blanca",
+      "informacion": "1 und",
+      "precio": "$ 1.557",
+      "categoria": "Frutas y Vegetales",
+      "img": "https://exitocol.vtexassets.com/arquivos/ids/11850931-500-auto?v=1766550013&width=500&height=auto&aspect=true",
+      "img2": "https://exitocol.vtexassets.com/arquivos/ids/11850932-800-auto?v=637807143815000000&width=800&height=auto&aspect=true"
+    }
+  ]
+}
