@@ -16,7 +16,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Fastkart</title>
   </head>
   <body>
@@ -40,12 +40,13 @@
       </section>
       <section>
         <div
-          class="container ps-0 header__navTop d-flex align-items-center justify-content-between py-3"
+          class="px-5 header__navTop d-flex align-items-center justify-content-between py-3"
         >
-          <figure class="m-0 header__title">
+          <figure class="m-0 header__title pagePpal">
             <img
               src="https://themes.pixelstrap.com/fastkart/assets/images/logo/1.png"
               alt="Logo Fastkart"
+              class="pagePpal"
             />
           </figure>
           <figure class="m-0 header__location">
@@ -58,12 +59,14 @@
             <div class="container-fluid">
               <form class="d-flex">
                 <input
+                  id="inputSearch"
                   class="form-control rounded-0 rounded-start header__formInput"
                   type="search"
                   placeholder="I'm searching for..."
                   aria-label="Search"
                 />
                 <button
+                  id="btnSearch"
                   class="btn btn-outline-success d-flex align-items-center rounded-0 rounded-end header__formButton"
                   type="submit"
                 >
@@ -72,7 +75,7 @@
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-search text-white"
+                    class="bi bi-search text-white header__formButton"
                     viewBox="0 0 16 16"
                   >
                     <path
@@ -96,7 +99,7 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="feather feather-phone-call me-3"
+                  class="feather feather-phone-call me-3 iconsRightMenu"
                 >
                   <path
                     d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
@@ -116,7 +119,7 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="feather feather-heart me-3"
+                  class="feather feather-heart me-3 iconsRightMenu"
                 >
                   <path
                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
@@ -136,7 +139,7 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="feather feather-shopping-cart me-3"
+                  class="feather feather-shopping-cart me-3 iconsRightMenu"
                 >
                   <circle cx="9" cy="21" r="1"></circle>
                   <circle cx="20" cy="21" r="1"></circle>
@@ -158,7 +161,7 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="feather feather-user me-3"
+                  class="feather feather-user me-3 iconsRightMenu"
                 >
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
@@ -172,7 +175,7 @@
         >
           <button
             type="button"
-            class="btn btn-success header__button d-flex align-items-center fs-6 fw-bold px-3 py-3"
+            class="btn btn-success header__button d-flex align-items-center fs-6 fw-bold px-3 py-3 AllCategories"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -184,14 +187,16 @@
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="feather feather-align-left me-3"
+              class="feather feather-align-left me-3 AllCategories"
             >
               <line x1="17" y1="10" x2="3" y2="10"></line>
               <line x1="21" y1="6" x2="3" y2="6"></line>
               <line x1="21" y1="14" x2="3" y2="14"></line>
               <line x1="17" y1="18" x2="3" y2="18"></line>
             </svg>
-            <span class="header__navButton--AllCategories">All Categories</span>
+            <span class="header__navButton--AllCategories AllCategories"
+              >All Categories</span
+            >
           </button>
           <div
             class="container__navButtons d-flex align-items-center justify-content-between container__nav"
@@ -263,7 +268,8 @@
                   src="https://themes.pixelstrap.com/fastkart/assets/svg/1/vegetable.svg"
                 />
                 <a
-                  class="nav-link active text-dark fs-6"
+                  class="nav-link active text-dark fs-6 filtredButton"
+                  name="Frutas y Vegetales"
                   aria-current="location"
                   href="#"
                 >
@@ -275,21 +281,34 @@
                   class="nav__img"
                   src="https://themes.pixelstrap.com/fastkart/assets/svg/1/cup.svg"
                 />
-                <a class="nav-link text-dark fs-6" href="#">Beverages</a>
+                <a
+                  class="nav-link text-dark fs-6 filtredButton"
+                  name="Bebidas"
+                  href="#"
+                  >Beverages</a
+                >
               </div>
               <div class="d-flex flex-row align-items-center">
                 <img
                   class="nav__img"
                   src="https://themes.pixelstrap.com/fastkart/assets/svg/1/meats.svg"
                 />
-                <a class="nav-link text-dark fs-6" href="#">Meats & Seafood</a>
+                <a
+                  class="nav-link text-dark fs-6 filtredButton"
+                  name="Carnes y Comida de mar"
+                  href="#"
+                  >Meats & Seafood</a
+                >
               </div>
               <div class="d-flex flex-row align-items-center">
                 <img
                   class="nav__img"
                   src="https://themes.pixelstrap.com/fastkart/assets/svg/1/breakfast.svg"
                 />
-                <a class="nav-link text-dark fs-6" href="#"
+                <a
+                  class="nav-link text-dark fs-6 filtredButton"
+                  name="Desayunos y Lácteos"
+                  href="#"
                   >Breakfast & Dairy</a
                 >
               </div>
@@ -298,14 +317,22 @@
                   class="nav__img"
                   src="https://themes.pixelstrap.com/fastkart/assets/svg/1/frozen.svg"
                 />
-                <a class="nav-link text-dark fs-6" href="#">Frozen Foods</a>
+                <a
+                  class="nav-link text-dark fs-6 filtredButton"
+                  name="Alimentos Congelados"
+                  href="#"
+                  >Frozen Foods</a
+                >
               </div>
               <div class="d-flex flex-row align-items-center">
                 <img
                   class="nav__img"
                   src="https://themes.pixelstrap.com/fastkart/assets/svg/1/biscuit.svg"
                 />
-                <a class="nav-link text-dark fs-6" href="#"
+                <a
+                  class="nav-link text-dark fs-6 filtredButton"
+                  name="Galletas y Bocadillos"
+                  href="#"
                   >Biscuits & Snacks</a
                 >
               </div>
@@ -314,7 +341,10 @@
                   class="nav__img"
                   src="https://themes.pixelstrap.com/fastkart/assets/svg/1/grocery.svg"
                 />
-                <a class="nav-link text-dark fs-6" href="#"
+                <a
+                  class="nav-link text-dark fs-6 filtredButton"
+                  name="Abarrotes y Elementos básicos"
+                  href="#"
                   >Grocery & Staples</a
                 >
               </div>
@@ -323,7 +353,10 @@
                   class="nav__img"
                   src="https://themes.pixelstrap.com/fastkart/assets/svg/1/drink.svg"
                 />
-                <a class="nav-link text-dark" href="#"
+                <a
+                  class="nav-link text-dark filtredButton"
+                  name="Vinos y Bebidas alcohólicas"
+                  href="#"
                   >Wines & Alcohol Drinks</a
                 >
               </div>
@@ -356,7 +389,7 @@
         </div>
       </section>
     </main>
-    <footer></footer>
+    <footer>Hola</footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

@@ -33,6 +33,25 @@
   );
 }
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sticky-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 90px;
+  z-index: 100;
+  background-color: white;
+}
+
+.main {
+  flex-grow: 1;
+}
+
 .header__topBar {
   background-color: var(--theme-color);
 }
@@ -49,20 +68,24 @@
 
 .header__title {
   height: 30px;
+  cursor: pointer;
 }
 
 .header__title img {
   height: 100%;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .header__location {
   height: 56px;
+  cursor: pointer;
 }
 
 .header__location img {
   height: 100%;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .header__formInput {
@@ -70,9 +93,19 @@
   height: 40px;
 }
 
+.form-control:focus {
+  border-color: var(--theme-color) !important;
+  box-shadow: 0 0 0 0.25rem rgba(13, 164, 135, 0.25) !important;
+}
+
 .header__rightMenu > li > a {
   text-decoration: none !important;
   color: #222;
+}
+
+.iconsRightMenu:hover {
+  color: var(--theme-color);
+  transform: scale(1.2);
 }
 
 .header__button {
@@ -147,8 +180,9 @@
 
 .cardProducto__figure {
   cursor: pointer;
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
+  position: relative;
 }
 
 .cardProducto__img {
@@ -156,6 +190,38 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.cardProducto__iconos {
+  position: absolute;
+  top: 80%;
+  left: 18%;
+  background-color: #fff;
+  border-radius: 7px;
+  z-index: 1000;
+  display: none;
+}
+
+.cardProducto__iconos--active {
+  display: block;
+}
+
+.cardProducto__iconos:hover,
+iconos:hover {
+  display: block;
+}
+
+.iconos {
+  color: black;
+}
+
+.iconos:hover {
+  color: var(--theme-color);
+}
+
+.wishlist--active,
+.wishlist--active:hover {
+  color: red;
 }
 
 .cardProducto__nombre {
@@ -178,6 +244,21 @@
 .cardProducto__span {
   background-color: #fff;
   border-radius: 10px;
+}
+
+.estrella {
+  color: grey;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.activo {
+  color: var(--bs-yellow);
+}
+
+.estrella:hover {
+  transform: scale(1.2);
+  color: var(--bs-yellow);
 }
 
 @media screen and (max-width: 990px) {
