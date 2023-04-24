@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles/reset.css" />
-    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="../styles/reset.css" />
+    <link rel="stylesheet" href="../styles/wishlist.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -17,7 +17,7 @@
       crossorigin="anonymous"
     />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Fastkart</title>
+    <title>Wishlist Fastkart</title>
   </head>
   <body>
     <header class="w-100">
@@ -26,7 +26,10 @@
       >
         <div class="d-flex align-items-center">
           <figure class="m-0">
-            <img src="./assets/images/LogoUbicación.JPG" alt="Logo ubicación" />
+            <img
+              src="../assets/images/LogoUbicación.JPG"
+              alt="Logo ubicación"
+            />
           </figure>
           <h6 class="m-0 text-white">1418 Riverwood Drive, CA 96052, US</h6>
         </div>
@@ -35,7 +38,7 @@
           <span class="text-decoration-underline header__span">Buy now!</span>
         </h6>
         <figure class="m-0 py-1 header__logoIdioma">
-          <img src="./assets/images/LogoIdioma.JPG" alt="Logo idioma" />
+          <img src="../assets/images/LogoIdioma.JPG" alt="Logo idioma" />
         </figure>
       </section>
       <section>
@@ -51,7 +54,7 @@
           </figure>
           <figure class="m-0 header__location">
             <img
-              src="./assets/images/LogoYourLocation.JPG"
+              src="../assets/images/LogoYourLocation.JPG"
               alt="Logo YourLocation"
             />
           </figure>
@@ -108,7 +111,7 @@
               </a>
             </li>
             <li>
-              <a href="./pages/wishlist.html">
+              <a href="./wishlist.html">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -225,176 +228,27 @@
           </button>
         </div>
       </section>
+      <section class="d-flex justify-content-between py-4 header__wishlist">
+        <h4 class="m-0">Wishlist</h4>
+        <div class="d-flex gap-2">
+          <span class="material-symbols-outlined home pagePpal"> home </span>
+          <span class="material-symbols-outlined home">
+            arrow_forward_ios
+          </span>
+          <h6 class="m-0">Wishlist</h6>
+        </div>
+      </section>
     </header>
-    <main class="main">
-      <section class="container ps-0 d-flex flex-row gap-3 mb-3">
-        <figure class="m-0">
-          <img
-            src="./assets/images/Promo1.JPG"
-            alt="Promoción 1"
-            class="img-fluid"
-            role="button"
-          />
-        </figure>
-        <div class="d-flex flex-column justify-content-between">
-          <figure class="m-0">
-            <img
-              src="./assets/images/Promo2.JPG"
-              alt="Promoción 2"
-              class="img-fluid"
-              role="button"
-            />
-          </figure>
-          <figure class="m-0">
-            <img
-              src="./assets/images/Promo3.JPG"
-              alt="Promoción 3"
-              class="img-fluid"
-              role="button"
-            />
-          </figure>
-        </div>
-      </section>
-      <section class="container">
-        <div class="row w-100">
-          <div class="col-3 bg-light p-4">
-            <h5 class="fs-5 fw-bold mb-4 container__tituloCategorias">
-              Categorías
-            </h5>
-            <nav class="nav flex-column flex-wrap gap-3">
-              <div class="d-flex flex-row align-items-center">
-                <img
-                  class="nav__img"
-                  src="https://themes.pixelstrap.com/fastkart/assets/svg/1/vegetable.svg"
-                />
-                <a
-                  class="nav-link active text-dark fs-6 filtredButton"
-                  name="Frutas y Vegetales"
-                  aria-current="location"
-                  href="#"
-                >
-                  Vegetables & Fruit</a
-                >
-              </div>
-              <div class="d-flex flex-row align-items-center">
-                <img
-                  class="nav__img"
-                  src="https://themes.pixelstrap.com/fastkart/assets/svg/1/cup.svg"
-                />
-                <a
-                  class="nav-link text-dark fs-6 filtredButton"
-                  name="Bebidas"
-                  href="#"
-                  >Beverages</a
-                >
-              </div>
-              <div class="d-flex flex-row align-items-center">
-                <img
-                  class="nav__img"
-                  src="https://themes.pixelstrap.com/fastkart/assets/svg/1/meats.svg"
-                />
-                <a
-                  class="nav-link text-dark fs-6 filtredButton"
-                  name="Carnes y Comida de mar"
-                  href="#"
-                  >Meats & Seafood</a
-                >
-              </div>
-              <div class="d-flex flex-row align-items-center">
-                <img
-                  class="nav__img"
-                  src="https://themes.pixelstrap.com/fastkart/assets/svg/1/breakfast.svg"
-                />
-                <a
-                  class="nav-link text-dark fs-6 filtredButton"
-                  name="Desayunos y Lácteos"
-                  href="#"
-                  >Breakfast & Dairy</a
-                >
-              </div>
-              <div class="d-flex flex-row align-items-center">
-                <img
-                  class="nav__img"
-                  src="https://themes.pixelstrap.com/fastkart/assets/svg/1/frozen.svg"
-                />
-                <a
-                  class="nav-link text-dark fs-6 filtredButton"
-                  name="Alimentos Congelados"
-                  href="#"
-                  >Frozen Foods</a
-                >
-              </div>
-              <div class="d-flex flex-row align-items-center">
-                <img
-                  class="nav__img"
-                  src="https://themes.pixelstrap.com/fastkart/assets/svg/1/biscuit.svg"
-                />
-                <a
-                  class="nav-link text-dark fs-6 filtredButton"
-                  name="Galletas y Bocadillos"
-                  href="#"
-                  >Biscuits & Snacks</a
-                >
-              </div>
-              <div class="d-flex flex-row align-items-center">
-                <img
-                  class="nav__img"
-                  src="https://themes.pixelstrap.com/fastkart/assets/svg/1/grocery.svg"
-                />
-                <a
-                  class="nav-link text-dark fs-6 filtredButton"
-                  name="Abarrotes y Elementos básicos"
-                  href="#"
-                  >Grocery & Staples</a
-                >
-              </div>
-              <div class="d-flex flex-row align-items-center">
-                <img
-                  class="nav__img"
-                  src="https://themes.pixelstrap.com/fastkart/assets/svg/1/drink.svg"
-                />
-                <a
-                  class="nav-link text-dark filtredButton"
-                  name="Vinos y Bebidas alcohólicas"
-                  href="#"
-                  >Wines & Alcohol Drinks</a
-                >
-              </div>
-            </nav>
-          </div>
-          <div class="col-9 container ps-3 py-4">
-            <div class="row">
-              <div class="col-7">
-                <h2 class="fw-bold">Top Save Today</h2>
-                <div class="w-100 d-flex">
-                  <hr class="bg-success w-25 separador2" />
-                  <span class="p-1 material-symbols-outlined"> spa </span>
-                  <hr class="bg-success w-25 separador2" />
-                </div>
-                <p class="text-justify">
-                  Don't miss this opportunity at a special discount just for
-                  this week.
-                </p>
-              </div>
-              <div
-                class="col-5 d-flex align-items-center justify-content-center"
-              >
-                <button type="button" class="btn btn-danger">
-                  Expires in: 349 : 3 : 45 : 37
-                </button>
-              </div>
-            </div>
-            <div class="containerProductos d-flex flex-wrap"></div>
-          </div>
-        </div>
-      </section>
+    <main>
+      <div
+        class="container containerProductos d-flex flex-wrap gap-3 py-4"
+      ></div>
     </main>
-    <footer>Hola</footer>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script src="./scripts/script.js" type="module"></script>
+    <script src="../scripts/wishlist.js" type="module"></script>
   </body>
 </html>
