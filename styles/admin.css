@@ -1,0 +1,389 @@
+:root {
+  --theme-color: #0da487;
+  --bs-blue: #0d6efd;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #d63384;
+  --bs-red: #dc3545;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #ffc107;
+  --bs-green: #198754;
+  --bs-teal: #20c997;
+  --bs-cyan: #0dcaf0;
+  --bs-white: #fff;
+  --bs-gray: #6c757d;
+  --bs-gray-dark: #343a40;
+  --bs-primary: #0d6efd;
+  --bs-secondary: #6c757d;
+  --bs-success: #198754;
+  --bs-info: #0dcaf0;
+  --bs-warning: #ffc107;
+  --bs-danger: #dc3545;
+  --bs-light: #f8f9fa;
+  --bs-dark: #212529;
+  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sticky-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 90px;
+  z-index: 100;
+  background-color: white;
+}
+
+.main {
+  flex-grow: 1;
+}
+
+.header__topBar {
+  background-color: var(--theme-color);
+}
+
+.header__span,
+.header__logoIdioma {
+  cursor: pointer;
+}
+
+.header__formButton {
+  background-color: orange !important;
+  border-color: none !important;
+}
+
+.header__formButton:hover {
+  transform: scale(1.1);
+}
+
+.header__title {
+  height: 30px;
+  cursor: pointer;
+}
+
+.header__title img {
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.header__location {
+  height: 56px;
+  cursor: pointer;
+}
+
+.header__location img {
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.header__formInput {
+  width: 30vw !important;
+  height: 40px;
+}
+
+.form-control:focus {
+  border-color: var(--theme-color) !important;
+  box-shadow: 0 0 0 0.25rem rgba(13, 164, 135, 0.25) !important;
+}
+
+.header__rightMenu > li > a {
+  text-decoration: none !important;
+  color: #222;
+}
+
+.iconsRightMenu:hover {
+  color: var(--theme-color);
+  transform: scale(1.2);
+}
+
+.header__button {
+  background-color: var(--theme-color) !important;
+}
+
+.header__navButtons {
+  background: white !important;
+  color: black !important;
+  border: none !important;
+}
+
+.header__navButtons:hover {
+  color: var(--theme-color) !important;
+}
+
+.header__button--delay {
+  background: rgba(13, 164, 135, 0.1) !important;
+  border: none !important;
+}
+
+.deal__text {
+  color: var(--theme-color);
+}
+
+.nav-link {
+  width: fit-content;
+}
+
+.nav-link:hover {
+  transform: scale(1.1);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-skip-ink: none;
+  text-decoration-color: var(--theme-color);
+}
+
+.nav__img {
+  width: 25px;
+  height: 25px;
+}
+
+.header__Admin {
+  background-color: #f8f8f8;
+  padding-left: 75px;
+  padding-right: 75px;
+}
+
+.material-symbols-outlined {
+  color: black;
+  height: fit-content;
+  cursor: pointer;
+}
+
+.material-symbols-outlined:hover {
+  color: var(--theme-color);
+  transform: scale(1.1);
+}
+
+.formAdmin {
+  position: fixed;
+  width: 30vw;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid gainsboro;
+}
+
+.container__productsToCart {
+  background-color: #f8f8f8;
+}
+
+.container__info {
+  width: 116px;
+}
+
+.cardProducto__figure {
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+}
+
+.cardProducto__img {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cardProducto__nombre {
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  color: #222 !important;
+}
+
+.cardProducto__span {
+  background-color: gainsboro;
+  padding: 5px;
+  border-radius: 15px;
+}
+
+.productSeller,
+.productQuantity {
+  font-size: 14px !important;
+  color: #222 !important;
+  font-weight: 500 !important;
+}
+
+.productSeller--span,
+.productQuantity--info {
+  font-weight: 400;
+  color: #4a5568;
+}
+
+.titles {
+  font-size: 14px;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+.cardProducto__precio {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+}
+
+.totalPrice,
+.main__totalPay {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  color: var(--theme-color);
+}
+
+.saveCart {
+  color: var(--theme-color);
+  text-decoration: underline;
+  width: fit-content;
+}
+
+.saveCart:hover {
+  color: var(--theme-color);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.removeCart {
+  color: red;
+  text-decoration: underline;
+  width: fit-content;
+}
+
+.removeCart:hover {
+  color: red;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.main__cart {
+  background-color: #f8f8f8;
+}
+
+.subTittlesCoupon {
+  font-size: 14px;
+  font-weight: 400;
+  color: #4a5568;
+}
+
+.main__formButton {
+  background-color: var(--theme-color) !important;
+  border-color: none !important;
+  color: white !important;
+}
+
+.main__formButton:hover {
+  transform: scale(1.1);
+}
+
+.esconderAdmin {
+  display: none;
+}
+
+.formCart {
+  display: none;
+  position: fixed;
+  width: 30vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  z-index: 9999;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid gainsboro;
+}
+
+.closeForm {
+  background-color: gainsboro !important;
+  border-color: gainsboro !important;
+  color: black !important;
+}
+
+.closeForm:hover {
+  background-color: grey !important;
+}
+
+.verCompras {
+  color: black;
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+.verCompras:hover {
+  color: var(--theme-color);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.verProductos {
+  color: black;
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+.verProductos:hover {
+  color: var(--theme-color);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.crearProducto {
+  color: black;
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+.crearProducto:hover {
+  color: var(--theme-color);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.informacionPago {
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  color: #222 !important;
+}
+
+.cantidadPagar {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  color: var(--theme-color);
+}
+
+.container__infoPago {
+  background-color: #f8f8f8 !important;
+  border-color: gainsboro !important;
+  color: black !important;
+}
+
+.formAddProduct {
+  display: none;
+  position: fixed;
+  width: 40vw;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -75%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid gainsboro;
+}

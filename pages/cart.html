@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../styles/reset.css" />
-    <link rel="stylesheet" href="../styles/wishlist.css" />
+    <link rel="stylesheet" href="../styles/cart.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -17,7 +17,7 @@
       crossorigin="anonymous"
     />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Wishlist Fastkart</title>
+    <title>Cart Fastkart</title>
   </head>
   <body>
     <header class="w-100">
@@ -142,7 +142,7 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="feather feather-shopping-cart me-3 iconsRightMenu cartPage"
+                  class="feather feather-shopping-cart me-3 iconsRightMenu"
                 >
                   <circle cx="9" cy="21" r="1"></circle>
                   <circle cx="20" cy="21" r="1"></circle>
@@ -164,7 +164,7 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="feather feather-user me-3 iconsRightMenu adminPage"
+                  class="feather feather-user me-3 iconsRightMenu"
                 >
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
@@ -202,7 +202,7 @@
             >
           </button>
           <div
-            class="container__navButtons d-flex align-items-center justify-content-between container__nav"
+            class="container__navButtons d-flex align-items-center justify-content-between container__nav closestForm"
           ></div>
           <button
             type="button"
@@ -228,27 +228,114 @@
           </button>
         </div>
       </section>
-      <section class="d-flex justify-content-between py-4 header__wishlist">
-        <h4 class="m-0">Wishlist</h4>
+      <section
+        class="d-flex justify-content-between py-4 header__cart mb-4 closestForm"
+      >
+        <h4 class="m-0">Cart</h4>
         <div class="d-flex gap-2">
           <span class="material-symbols-outlined home pagePpal"> home </span>
           <span class="material-symbols-outlined home">
             arrow_forward_ios
           </span>
-          <h6 class="m-0">Wishlist</h6>
+          <h6 class="m-0">Cart</h6>
         </div>
       </section>
     </header>
     <main>
-      <div
-        class="container containerProductos d-flex flex-wrap gap-3 py-4"
-      ></div>
+      <table class="container table closestForm">
+        <tbody class="container__productsToCart"></tbody>
+      </table>
+      <section class="container d-flex flex-column main__cart mt-5 closestForm">
+        <h3 class="fs-5 mb-4 pt-2">Cart Total</h3>
+        <h6 class="subTittlesCoupon mb-2">Coupon Apply</h6>
+        <nav class="navbar navbar-light mb-3 w-100">
+          <div class="w-100">
+            <form class="d-flex w-100">
+              <input
+                id="inputSearch"
+                class="form-control rounded-0 rounded-start main__formInput w-100"
+                type="search"
+                placeholder="Enter Coupon Code Here..."
+                aria-label="Search"
+              />
+              <button
+                id="btnSearch"
+                class="btn btn-outline-success d-flex align-items-center rounded-0 rounded-end main__formButton"
+                type="submit"
+              >
+                Apply
+              </button>
+            </form>
+          </div>
+        </nav>
+        <div class="d-flex justify-content-between pe-3">
+          <h4 class="subTittlesCoupon">Subtotal</h4>
+          <p id="subTotalPay" class="subTittlesCoupon subtotalCart"></p>
+        </div>
+        <div class="d-flex justify-content-between pe-3">
+          <h4 class="subTittlesCoupon">Coupon Discount</h4>
+          <p class="subTittlesCoupon">(-) $ 0.0</p>
+        </div>
+        <div class="d-flex justify-content-between pe-3">
+          <h4 class="subTittlesCoupon">Shipping</h4>
+          <p id="shippingPay" class="subTittlesCoupon shipping">$ 24450</p>
+        </div>
+        <div class="d-flex justify-content-between pe-3">
+          <h4 class="fs-5">Total (COP)</h4>
+          <p id="totalPay" class="main__totalPay"></p>
+        </div>
+        <button type="button" class="btn btn-danger mainButtonCheckout">
+          Process To Checkout
+        </button>
+        <button
+          type="button"
+          class="btn btn-light d-flex justify-content-center"
+        >
+          <span class="material-symbols-outlined"> arrow_back </span>
+          <p class="text-black-100 ms-2 returnToShopping">Return To Shopping</p>
+        </button>
+      </section>
+      <form action="" id="formCart" class="formCart">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre y apellidos:</label>
+          <input type="text" class="form-control" id="name" name="name" />
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Dirección:</label>
+          <input type="text" class="form-control" id="address" name="address" />
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Teléfono:</label>
+          <input type="number" class="form-control" id="phone" name="phone" />
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">E-mail:</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            aria-describedby="emailHelp"
+            name="email"
+          />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <div class="d-flex justify-content-end gap-3">
+          <button type="button" class="btn btn-primary closeForm">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary btn-danger">
+            Buy Now
+          </button>
+        </div>
+      </form>
     </main>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script src="../scripts/wishlist.js" type="module"></script>
+    <script src="../scripts/cart.js" type="module"></script>
   </body>
 </html>

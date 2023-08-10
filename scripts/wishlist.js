@@ -2,6 +2,9 @@ import {
   getAllProducts,
   printCards,
   printNavButtons,
+  postProductToCart,
+  deleteProductFromCart,
+  putProductToCart,
 } from "../services/funciones.js";
 
 // Se realiza la activación del servidor local con el JSON-server y el archivo db.json
@@ -18,9 +21,14 @@ const botones = [
 ];
 
 const URL_API = "http://localhost:3000/productos";
+
+// Url del endpoint de la API de productos en el carrito.
+const URL_API_CARRITO = "http://localhost:3000/carrito";
+
 let arrayProductos = [];
 let arrayProductosFavoritos = [];
 let containerProductosFavoritos = "";
+let arrayProductosCarrito = [];
 
 // Conseguir los productos que se han añadido a favoritos desde el LocalStorage.
 const arrayIdProductosFavoritos = JSON.parse(
@@ -32,6 +40,7 @@ const arrayIdProductosFavoritos = JSON.parse(
 document.addEventListener("DOMContentLoaded", async () => {
   // Conseguir todos los productos de la API.
   arrayProductos = await getAllProducts(URL_API);
+  arrayProductosCarrito = await getAllProducts(URL_API_CARRITO);
 
   const containerNavButtons = document.querySelector(".container__navButtons");
   printNavButtons(botones, containerNavButtons);
@@ -93,20 +102,63 @@ document.addEventListener("click", async (event) => {
     }
   }
 
-  // Suma o resta la cantidad de productos que se van a añadir al carrito.
+  // Suma o resta la cantidad de productos que se van a añadir al carrito. También, añade o elimina el producto del array de productos en el carrito.
   if (event.target.classList[2] === "remove") {
     let contador = parseInt(event.target.nextElementSibling.innerText);
     if (contador > 0) {
       contador--;
       event.target.nextElementSibling.innerHTML = contador;
     }
+
+    // Elimina el producto del array de productos en el carrito si la cantidad es 0.
+    if (event.target.nextElementSibling.innerHTML >= 0) {
+      const idProducto = parseInt(event.target.getAttribute("name"));
+      const producto = arrayProductos.find((producto) => {
+        return producto.id === idProducto;
+      });
+
+      producto.cantidad = event.target.nextElementSibling.innerText;
+
+      if (
+        arrayProductosCarrito.some((producto) => producto.id === idProducto) &&
+        event.target.nextElementSibling.innerHTML == 0
+      ) {
+        await deleteProductFromCart(URL_API_CARRITO, idProducto);
+        arrayProductosCarrito = await getAllProducts(URL_API_CARRITO);
+      }
+
+      if (producto.cantidad >= 1) {
+        await putProductToCart(URL_API_CARRITO, idProducto, producto);
+      }
+    }
   } else if (event.target.classList[2] === "add") {
     let contador = parseInt(event.target.previousElementSibling.innerText);
     contador++;
     event.target.previousElementSibling.innerHTML = contador;
+
+    // Añade el producto del array de productos en el carrito si la cantidad es mayor a 0.
+    if (event.target.previousElementSibling.innerHTML >= 1) {
+      const idProducto = parseInt(event.target.getAttribute("name"));
+      const producto = arrayProductos.find((producto) => {
+        return producto.id === idProducto;
+      });
+
+      producto.cantidad = event.target.previousElementSibling.innerText;
+
+      if (
+        !arrayProductosCarrito.some((producto) => producto.id === idProducto)
+      ) {
+        await postProductToCart(URL_API_CARRITO, producto);
+        arrayProductosCarrito = await getAllProducts(URL_API_CARRITO);
+      }
+
+      if (producto.cantidad > 1) {
+        await putProductToCart(URL_API_CARRITO, idProducto, producto);
+      }
+    }
   }
 
-  // Permite añadir productos al array de productos favoritos.
+  // Permite eliminar productos al array de productos favoritos.
   if (event.target.classList.contains("cancel")) {
     const idProducto = parseInt(event.target.attributes.name.value);
     Swal.fire("Good job!", "Product removed from wish list!", "success");
@@ -129,11 +181,20 @@ document.addEventListener("click", async (event) => {
   if (event.target.classList.contains("wishlistPage")) {
     window.location.href = "../pages/wishlist.html";
   }
-  
+
+  // Redirecciona a la página de cart o carrito.
+  if (event.target.classList.contains("cartPage")) {
+    window.location.href = "../pages/cart.html";
+  }
+
+  // Redirecciona a la página de administrador.
+  if (event.target.classList.contains("adminPage")) {
+    window.location.href = "../pages/admin.html";
+  }
 });
 
 // Funcionalidad para que el nav se mantenga fijo en la parte superior de la página.
-window.addEventListener("scroll", function () {
+window.addEventListener("scroll", () => {
   const header = document.querySelector(".header__navTop");
   if (window.pageYOffset > header.offsetTop) {
     header.classList.add("sticky-header");
@@ -161,3 +222,16 @@ document.addEventListener("mouseout", (event) => {
     event.target.src = producto.img;
   }
 });
+
+// Funcionalidad que esperar 0.25 segundos antes de pintar la cantidad de productos que están en el carrito así se cambie de página.
+setTimeout(() => {
+  arrayIdProductosFavoritos.forEach((idProducto) => {
+    const producto = arrayProductosCarrito.find((producto) => {
+      return producto.id == idProducto;
+    });
+
+    if (producto) {
+      document.getElementsByName(producto.id)[3].innerHTML = producto.cantidad;
+    }
+  });
+}, 200);

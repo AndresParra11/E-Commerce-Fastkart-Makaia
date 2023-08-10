@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Page</title>
     <link rel="stylesheet" href="../styles/reset.css" />
-    <link rel="stylesheet" href="../styles/wishlist.css" />
+    <link rel="stylesheet" href="../styles/admin.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -17,7 +18,6 @@
       crossorigin="anonymous"
     />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Wishlist Fastkart</title>
   </head>
   <body>
     <header class="w-100">
@@ -142,7 +142,7 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="feather feather-shopping-cart me-3 iconsRightMenu cartPage"
+                  class="feather feather-shopping-cart me-3 iconsRightMenu"
                 >
                   <circle cx="9" cy="21" r="1"></circle>
                   <circle cx="20" cy="21" r="1"></circle>
@@ -164,7 +164,7 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="feather feather-user me-3 iconsRightMenu adminPage"
+                  class="feather feather-user me-3 iconsRightMenu"
                 >
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
@@ -202,7 +202,7 @@
             >
           </button>
           <div
-            class="container__navButtons d-flex align-items-center justify-content-between container__nav"
+            class="container__navButtons d-flex align-items-center justify-content-between container__nav closestForm"
           ></div>
           <button
             type="button"
@@ -228,27 +228,161 @@
           </button>
         </div>
       </section>
-      <section class="d-flex justify-content-between py-4 header__wishlist">
-        <h4 class="m-0">Wishlist</h4>
+      <section
+        class="d-flex justify-content-between py-4 header__Admin mb-4 closestForm"
+      >
+        <h4 class="m-0">Admin</h4>
+        <h5
+          id="verCompras"
+          class="m-0 text-decoration-underline verCompras esconderAdmin"
+        >
+          Ver compras
+        </h5>
+        <h5
+          id="verProductos"
+          class="m-0 text-decoration-underline verProductos esconderAdmin"
+        >
+          Ver productos
+        </h5>
+        <h5
+          id="crearProducto"
+          class="m-0 text-decoration-underline crearProducto esconderAdmin"
+        >
+          Crear producto
+        </h5>
         <div class="d-flex gap-2">
           <span class="material-symbols-outlined home pagePpal"> home </span>
           <span class="material-symbols-outlined home">
             arrow_forward_ios
           </span>
-          <h6 class="m-0">Wishlist</h6>
+          <h6 class="m-0">Admin</h6>
         </div>
       </section>
     </header>
     <main>
-      <div
-        class="container containerProductos d-flex flex-wrap gap-3 py-4"
-      ></div>
+      <form action="" id="formAdmin" class="formAdmin">
+        <div class="mb-3">
+          <label for="user" class="form-label">Usuario:</label>
+          <input type="text" class="form-control" id="user" name="user" />
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+          />
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary btn-success">
+            Login
+          </button>
+        </div>
+      </form>
+      <table id="containerProductos" class="container table openLogin">
+        <tbody class="containerAdmin"></tbody>
+      </table>
+      <section class="infoPay"></section>
+      <form action="" id="formCrearProducto" class="formAddProduct">
+        <div class="mb-3">
+          <label for="idProducto" class="form-label">ID del producto:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="idProducto"
+            name="idProducto"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="nombreProducto" class="form-label"
+            >Nombre del producto:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="nombreProducto"
+            name="nombreProducto"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="informacionProducto" class="form-label"
+            >Información del producto, [g] o [mL]:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="informacionProducto"
+            name="informacionProducto"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="precioProducto" class="form-label"
+            >Precio del producto:</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            id="precioProducto"
+            name="precioProducto"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="categoriaProducto" class="form-label"
+            >Selecciona la categoría del producto:</label
+          >
+          <input
+            class="form-control"
+            list="datalistOptions"
+            id="categoriaProducto"
+            placeholder="Categoría del prod..."
+          />
+          <datalist id="datalistOptions">
+            <option value="Frutas y Vegetales"></option>
+            <option value="Bebidas"></option>
+            <option value="Carnes y Comida de mar"></option>
+
+            <option value="Desayunos y Lácteos"></option>
+            <option value="Alimentos Congelados"></option>
+            <option value="Galletas y Bocadillos"></option>
+            <option value="Abarrotes y Elementos básicos"></option>
+            <option value="Vinos y Bebidas alcohólicas"></option>
+          </datalist>
+        </div>
+        <div class="mb-3">
+          <label for="img1Producto" class="form-label"
+            >Link de la imagen 1 del producto:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="img1Producto"
+            name="img1Producto"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="img2Producto" class="form-label"
+            >Link de la imagen 2 del producto:</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="img2Producto"
+            name="img2Producto"
+          />
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary btn-success">
+            Crear
+          </button>
+        </div>
+      </form>
     </main>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script src="../scripts/wishlist.js" type="module"></script>
+    <script src="../scripts/admin.js" type="module"></script>
   </body>
 </html>
